@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://denseoofog.github.io/4-renters-insurance-cost/sitemap.xml
