@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://denseoofog.github.io/4-renters-insurance-cost/sitemap.xml
+Sitemap: https://4-renters-insurance-cost.vercel.app/sitemap.xml
