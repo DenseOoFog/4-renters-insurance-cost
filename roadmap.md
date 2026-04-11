@@ -38,13 +38,13 @@
 - [x] `robots.txt` 与 `sitemap.xml` 创建
 
 ### Day 2 - 4/10
-- [ ] 发布 Day2 文章（How Much Does Renters Insurance Cost in 2026）
+- [x] 发布 Day2 文章（How Much Does Renters Insurance Cost in 2026）
 - [ ] 用网址检查提交首页 + Day2 页面
-- [ ] 在首页添加 Day2 入口链接
+- [x] 在首页添加 Day2 入口链接
 
 ### Day 3 - 4/11
-- [ ] 发布 Day3 文章（Is Renters Insurance Worth It）
-- [ ] 增加 3-5 条内链（Day1/Day2/Day3 互链）
+- [x] 发布 Day3 文章（Is Renters Insurance Worth It）
+- [x] 增加 3-5 条内链（Day1/Day2/Day3 互链）
 - [ ] 复盘 GA4 实时访问与页面停留
 
 ### Day 4 - 4/12

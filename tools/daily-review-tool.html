@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSC + GA4 每日复盘采集工具</title>
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --text: #334155;
+        --heading: #0f172a;
+        --primary: #1d4ed8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+      .container { width: min(980px, 94%); margin: 24px auto 40px; }
+      h1, h2 { color: var(--heading); }
+      .card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 14px;
+        margin-bottom: 14px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+      }
+      label { display: block; font-size: 13px; margin-bottom: 5px; color: #475569; }
+      input, textarea {
+        width: 100%;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 8px 10px;
+      }
+      textarea { min-height: 160px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .btn {
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 14px;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn.secondary {
+        background: #0f172a;
+      }
+      .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+      .tips { font-size: 13px; color: #64748b; }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>GSC + GA4 每日复盘采集工具</h1>
+      <p class="tips">每天填一次。点“生成复盘文本”后，把输出直接发给我，我会给你行动建议。</p>
+
+      <section class="card">
+        <h2>基础信息</h2>
+        <div class="grid">
+          <div>
+            <label for="date">日期</label>
+            <input id="date" type="date" />
+          </div>
+          <div>
+            <label for="newPages">今日新发布页面数</label>
+            <input id="newPages" type="number" min="0" value="0" />
+          </div>
+          <div>
+            <label for="indexedNew">今日新增收录页面数</label>
+            <input id="indexedNew" type="number" min="0" value="0" />
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>GSC 指标</h2>
+        <div class="grid">
+          <div>
+            <label for="impressions">展示量（Impressions）</label>
+            <input id="impressions" type="number" min="0" value="0" />
+          </div>
+          <div>
+            <label for="clicks">点击量（Clicks）</label>
+            <input id="clicks" type="number" min="0" value="0" />
+          </div>
+          <div>
+            <label for="ctr">CTR（%）</label>
+            <input id="ctr" type="number" min="0" step="0.01" value="0" />
+          </div>
+          <div>
+            <label for="position">平均排名（Position）</label>
+            <input id="position" type="number" min="0" step="0.1" value="0" />
+          </div>
+          <div>
+            <label for="indexedTotal">总收录页面数</label>
+            <input id="indexedTotal" type="number" min="0" value="0" />
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>GA4 指标</h2>
+        <div class="grid">
+          <div>
+            <label for="usersRealtime">实时活跃用户</label>
+            <input id="usersRealtime" type="number" min="0" value="0" />
+          </div>
+          <div>
+            <label for="pageViews">24小时页面浏览量（PV）</label>
+            <input id="pageViews" type="number" min="0" value="0" />
+          </div>
+          <div>
+            <label for="engagement">平均互动时长（秒）</label>
+            <input id="engagement" type="number" min="0" value="0" />
+          </div>
+          <div>
+            <label for="pagesPerSession">每次会话浏览页数</label>
+            <input id="pagesPerSession" type="number" min="0" step="0.01" value="0" />
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>补充说明（可选）</h2>
+        <textarea id="notes" placeholder="例如：今天提交了2篇新文，sitemap仍显示抓取失败，怀疑是缓存问题"></textarea>
+      </section>
+
+      <section class="card">
+        <div class="actions">
+          <button class="btn" id="genBtn" type="button">生成复盘文本</button>
+          <button class="btn secondary" id="copyBtn" type="button">复制输出</button>
+        </div>
+        <h2>输出（发给我）</h2>
+        <textarea id="output" readonly></textarea>
+      </section>
+    </main>
+
+    <script>
+      function getNum(id) {
+        var v = Number(document.getElementById(id).value);
+        return Number.isFinite(v) ? v : 0;
+      }
+
+      function suggestion(data) {
+        var s = [];
+        if (data.ctr < 2 && data.impressions > 0) s.push("CTR 偏低：优先改标题与 meta 描述。");
+        if (data.indexedNew === 0 && data.newPages > 0) s.push("新文未收录：请求索引 + 增加 3 条内链。");
+        if (data.engagement > 0 && data.engagement < 45) s.push("互动时长低：首屏改为“结论+表格+下一步行动”。");
+        if (data.pagesPerSession > 0 && data.pagesPerSession < 1.3) s.push("浏览深度低：增加文内“下一篇推荐”模块。");
+        if (data.impressions === 0) s.push("展示为 0：增加 1 篇长尾文章 + 1 个城市页。");
+        if (s.length === 0) s.push("指标正常：继续按计划发布并保持周复盘。");
+        return s;
+      }
+
+      function buildOutput() {
+        var data = {
+          date: document.getElementById("date").value || "(未填日期)",
+          newPages: getNum("newPages"),
+          indexedNew: getNum("indexedNew"),
+          impressions: getNum("impressions"),
+          clicks: getNum("clicks"),
+          ctr: getNum("ctr"),
+          position: getNum("position"),
+          indexedTotal: getNum("indexedTotal"),
+          usersRealtime: getNum("usersRealtime"),
+          pageViews: getNum("pageViews"),
+          engagement: getNum("engagement"),
+          pagesPerSession: getNum("pagesPerSession"),
+          notes: document.getElementById("notes").value.trim()
+        };
+
+        var lines = [];
+        lines.push("日期: " + data.date);
+        lines.push("");
+        lines.push("【今日输入数据】");
+        lines.push("- 新发布页面: " + data.newPages);
+        lines.push("- 新增收录页面: " + data.indexedNew);
+        lines.push("- GSC 展示: " + data.impressions);
+        lines.push("- GSC 点击: " + data.clicks);
+        lines.push("- GSC CTR: " + data.ctr + "%");
+        lines.push("- GSC 平均排名: " + data.position);
+        lines.push("- GSC 总收录页面: " + data.indexedTotal);
+        lines.push("- GA4 实时活跃用户: " + data.usersRealtime);
+        lines.push("- GA4 24小时 PV: " + data.pageViews);
+        lines.push("- GA4 平均互动时长: " + data.engagement + " 秒");
+        lines.push("- GA4 每次会话浏览页数: " + data.pagesPerSession);
+        if (data.notes) {
+          lines.push("- 备注: " + data.notes);
+        }
+        lines.push("");
+        lines.push("【自动建议】");
+        suggestion(data).forEach(function (v) { lines.push("- " + v); });
+        lines.push("");
+        lines.push("请基于以上数据，给我今天的复盘结论 + 明天3个优先动作。");
+
+        document.getElementById("output").value = lines.join("\n");
+      }
+
+      document.getElementById("genBtn").addEventListener("click", buildOutput);
+      document.getElementById("copyBtn").addEventListener("click", function () {
+        var output = document.getElementById("output");
+        if (!output.value) buildOutput();
+        output.select();
+        document.execCommand("copy");
+      });
+
+      document.getElementById("date").value = new Date().toISOString().slice(0, 10);
+      buildOutput();
+    </script>
+  </body>
+</html>
