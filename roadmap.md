@@ -48,9 +48,9 @@
 - [ ] 复盘 GA4 实时访问与页面停留
 
 ### Day 4 - 4/12
-- [ ] 产出第1个州页（California）
-- [ ] 产出第1个城市页（Los Angeles）
-- [ ] 更新 `sitemap.xml` 并重新提交
+- [x] 产出第1个州页（California）
+- [x] 产出第1个城市页（Los Angeles）
+- [x] 更新 `sitemap.xml` 并重新提交
 
 ### Day 5 - 4/13
 - [ ] 产出第2个州页（Texas）
