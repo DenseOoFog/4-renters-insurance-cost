@@ -53,9 +53,9 @@
 - [x] 更新 `sitemap.xml` 并重新提交
 
 ### Day 5 - 4/13
-- [ ] 产出第2个州页（Texas）
-- [ ] 产出第2个城市页（Houston）
-- [ ] 调整首页导航加入 State/City 入口
+- [x] 产出第2个州页（Texas）
+- [x] 产出第2个城市页（Houston）
+- [x] 调整首页导航加入 State/City 入口
 
 ### Day 6 - 4/14
 - [ ] 发布理赔场景页（How To File A Claim）
