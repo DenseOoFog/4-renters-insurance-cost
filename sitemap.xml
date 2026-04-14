@@ -26,6 +26,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/articles/renters-insurance-deductible-explained.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/articles/landlord-requires-renters-insurance-what-to-do.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/articles/renters-insurance-claim-denied-next-steps.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://4-renters-insurance-cost.vercel.app/about.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -72,6 +87,26 @@
   </url>
   <url>
     <loc>https://4-renters-insurance-cost.vercel.app/city-houston-renters-insurance-cost.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/state-florida-renters-insurance-cost.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/city-miami-renters-insurance-cost.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/state-new-york-renters-insurance-cost.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/city-new-york-renters-insurance-cost.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
