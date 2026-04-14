@@ -21,6 +21,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/articles/how-to-file-a-renters-insurance-claim.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://4-renters-insurance-cost.vercel.app/about.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
