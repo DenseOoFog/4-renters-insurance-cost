@@ -36,6 +36,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/articles/renters-insurance-for-students.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://4-renters-insurance-cost.vercel.app/tools/renters-premium-calculator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -67,6 +72,11 @@
   </url>
   <url>
     <loc>https://4-renters-insurance-cost.vercel.app/state-new-york-renters-insurance-cost.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://4-renters-insurance-cost.vercel.app/state-illinois-renters-insurance-cost.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
